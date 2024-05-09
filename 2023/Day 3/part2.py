@@ -92,65 +92,41 @@ def check_for_number(grid: Grid, row: int, col: int) -> int:
     return 0
 
 def check_symbol(grid: Grid) -> int:
-    number: int = 0
+    number: int = 1
     count: int = 0
     i: int = 0
     symbol: list[int] = [grid.get_row(), grid.get_col()]
     i = check_for_number(grid, symbol[0]+1, symbol[1])
     if i != 0:
-        if number == 0:
-            number = i
-        else:
-            number *= i
+        number *= i
         count += 1
     i = check_for_number(grid, symbol[0]+1, symbol[1]+1)
     if i != 0:
-        if number == 0:
-            number = i
-        else:
-            number *= i
+        number *= i
         count += 1
     i = check_for_number(grid, symbol[0], symbol[1]+1)
     if i != 0:
-        if number == 0:
-            number = i
-        else:
-            number *= i
+        number *= i
         count += 1
     i = check_for_number(grid, symbol[0]-1, symbol[1]+1)
     if i != 0:
-        if number == 0:
-            number = i
-        else:
-            number *= i
+        number *= i
         count += 1
     i = check_for_number(grid, symbol[0]-1, symbol[1])
     if i != 0:
-        if number == 0:
-            number = i
-        else:
-            number *= i
+        number *= i
         count += 1
     i = check_for_number(grid, symbol[0]-1, symbol[1]-1)
     if i != 0:
-        if number == 0:
-            number = i
-        else:
-            number *= i
+        number *= i
         count += 1
     i = check_for_number(grid, symbol[0], symbol[1]-1)
     if i != 0:
-        if number == 0:
-            number = i
-        else:
-            number *= i
+        number *= i
         count += 1
     i = check_for_number(grid, symbol[0]+1, symbol[1]-1)
     if i != 0:
-        if number == 0:
-            number = i
-        else:
-            number *= i
+        number *= i
         count += 1
     if count == 2:
         return number
