@@ -93,15 +93,15 @@ def check_for_number(grid: Grid, row: int, col: int) -> int:
 
 def check_symbol(grid: Grid) -> int:
     number: int = 0
+    r: int = -1
+    c: int = -1
     symbol: list[int] = [grid.get_row(), grid.get_col()]
-    number += check_for_number(grid, symbol[0]+1, symbol[1])
-    number += check_for_number(grid, symbol[0]+1, symbol[1]+1)
-    number += check_for_number(grid, symbol[0], symbol[1]+1)
-    number += check_for_number(grid, symbol[0]-1, symbol[1]+1)
-    number += check_for_number(grid, symbol[0]-1, symbol[1])
-    number += check_for_number(grid, symbol[0]-1, symbol[1]-1)
-    number += check_for_number(grid, symbol[0], symbol[1]-1)
-    number += check_for_number(grid, symbol[0]+1, symbol[1]-1)
+    while r <= 1:
+        while c <= 1:
+            number += check_for_number(grid, symbol[0]+r, symbol[1]+c)
+            c += 1
+        c = -1
+        r +=1
     return number
 
 def parse_line(line: str, symbols: list[str]) -> None:

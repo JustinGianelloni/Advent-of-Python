@@ -54,8 +54,7 @@ def look_right(grid: Grid, row: int, col: int) -> str | None:
     right: str | None = look_right(grid, row, col+1)
     if right is not None:
         return character + right
-    else:
-        return character
+    return character
 
 def look_left(grid: Grid, row: int, col: int) -> str | None:
     character: str | None = grid.get_char_at(row, col)
@@ -67,8 +66,7 @@ def look_left(grid: Grid, row: int, col: int) -> str | None:
     left: str | None = look_left(grid, row, col-1)
     if left is not None:
         return left + character
-    else:
-        return character
+    return character
 
 def expand_number(grid: Grid, row: int, col: int) -> int:
     if grid.is_in_tracker([row, col]):
@@ -95,39 +93,18 @@ def check_symbol(grid: Grid) -> int:
     number: int = 1
     count: int = 0
     i: int = 0
+    r: int = -1
+    c: int = -1
     symbol: list[int] = [grid.get_row(), grid.get_col()]
-    i = check_for_number(grid, symbol[0]+1, symbol[1])
-    if i != 0:
-        number *= i
-        count += 1
-    i = check_for_number(grid, symbol[0]+1, symbol[1]+1)
-    if i != 0:
-        number *= i
-        count += 1
-    i = check_for_number(grid, symbol[0], symbol[1]+1)
-    if i != 0:
-        number *= i
-        count += 1
-    i = check_for_number(grid, symbol[0]-1, symbol[1]+1)
-    if i != 0:
-        number *= i
-        count += 1
-    i = check_for_number(grid, symbol[0]-1, symbol[1])
-    if i != 0:
-        number *= i
-        count += 1
-    i = check_for_number(grid, symbol[0]-1, symbol[1]-1)
-    if i != 0:
-        number *= i
-        count += 1
-    i = check_for_number(grid, symbol[0], symbol[1]-1)
-    if i != 0:
-        number *= i
-        count += 1
-    i = check_for_number(grid, symbol[0]+1, symbol[1]-1)
-    if i != 0:
-        number *= i
-        count += 1
+    while r <= 1:
+        while c <= 1:
+            i = check_for_number(grid, symbol[0]+r, symbol[1]+c)
+            if i != 0:
+                number *= i
+                count += 1
+            c += 1
+        c = -1
+        r += 1
     if count == 2:
         return number
     return 0
