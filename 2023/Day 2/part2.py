@@ -1,6 +1,6 @@
 from io import TextIOWrapper
 
-INPUT = "input.txt"
+INPUT: str = "input.txt"
 
 def parse_color(color: str, colors: dict[str, int]) -> None:
     split: list[str] = color.split(" ")

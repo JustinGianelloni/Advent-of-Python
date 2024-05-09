@@ -1,7 +1,7 @@
 from enum import Enum
 from io import TextIOWrapper
 
-INPUT = "input.txt"
+INPUT: str = "input.txt"
 COLORS: dict[str, int] = {
     "red": 12,
     "green": 13,
